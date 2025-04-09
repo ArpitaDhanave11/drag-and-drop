@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+
+        }
+        .left,.right{
+            height: 400px;
+            width: 200px;
+            border:2px dotted solid black;
+           
+            
+        }
+        .left{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .item{
+            list-style: none;
+            background-color: aqua;
+            font-weight: bolder;
+            text-transform: uppercase;
+            padding: 10px 15px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <li class="items" draggable="true"> list item1</li>
+            <li class="items" draggable="true">list item2</li>
+            <li class="items" draggable="true">list item3</li>
+        </div>
+        <div class="right">
+>
+    </div>
+    <script>
+        const left = document.querySelector('.left');
+        const right = document.querySelector('.right');
+        const items= document.getElementsByClassName('.items');
+
+        let selected=null;
+
+        for(let lists of items){
+            lists.addEventListener('dragstart', (e) => {
+                console.log(e);
+                selected = e.target;
+                console.log(e.target);
+
+
+        })
+    }
+        right.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            
+        })
+        right.addEventListener('drop', (e) => {
+            if(selected)
+            right.appendChild(selected);
+            selected=null;
+           
+            
+        })
+        
+    </script>
+</body>
+</html>
